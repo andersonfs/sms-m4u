@@ -7,7 +7,8 @@ import java.util.Date;
 import java.util.List;
 
 import javax.inject.Inject;
-import javax.inject.Named;
+
+import org.springframework.stereotype.Service;
 
 import br.com.m4u.smsm4u.app.business.AbstractBusiness;
 import br.com.m4u.smsm4u.app.business.ITextMessageBusiness;
@@ -20,7 +21,7 @@ import br.com.m4u.smsm4u.app.entity.TextMessage;
  * @author AndersonFirmino
  *
  */
-@Named
+@Service
 public class TextMessageBusinessImpl extends AbstractBusiness<TextMessage, Long> implements ITextMessageBusiness {
 
 	private static final long serialVersionUID = -1376742752186582708L;

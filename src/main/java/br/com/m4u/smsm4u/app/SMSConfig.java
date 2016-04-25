@@ -6,9 +6,7 @@ import static org.springframework.transaction.support.TransactionSynchronization
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
-import javax.sql.DataSource;
 
-import org.h2.jdbcx.JdbcDataSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -29,20 +27,6 @@ public class SMSConfig {
 
     private static final String DATA_SOURCE_NAME = "smsM4UDS";
 
-	/**
-     * An in-memory H2 database data source.
-     *
-     * @return the data source
-     */
-    @Bean
-    DataSource dataSourceProvider() {
-        JdbcDataSource dataSource = new JdbcDataSource();
-        dataSource.setURL("jdbc:hsqldb:MyDB;DB_CLOSE_DELAY=-1");
-        dataSource.setUser("sa");
-        dataSource.setPassword("");
-        return dataSource;
-    }
-
     /**
      * Provides an entity manager factory based on the data source.
      *
@@ -50,7 +34,7 @@ public class SMSConfig {
      * @return the entity manager factory
      */
     @Bean
-    EntityManagerFactory entityManagerFactoryProvider(DataSource ds) {
+    EntityManagerFactory entityManagerFactoryProvider() {
     	EntityManagerFactory emf = Persistence.createEntityManagerFactory(DATA_SOURCE_NAME);
         return emf;
     }
